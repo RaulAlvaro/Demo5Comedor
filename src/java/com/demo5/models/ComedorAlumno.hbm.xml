@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/06/2018 12:59:00 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="ComedorBD" name="com.demo5.models.ComedorAlumno" optimistic-lock="version" table="ComedorAlumno">
+    <id name="dniAlumno" type="int">
+      <column name="dniAlumno"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="codigoAlumno" type="int">
+      <column name="codigoAlumno" not-null="true"/>
+    </property>
+    <property name="nombresAlumno" type="string">
+      <column length="45" name="nombresAlumno"/>
+    </property>
+    <property name="apellidosAlumno" type="string">
+      <column length="45" name="apellidosAlumno"/>
+    </property>
+    <property name="facultad" type="string">
+      <column length="45" name="facultad"/>
+    </property>
+    <property name="escuela" type="string">
+      <column length="45" name="escuela"/>
+    </property>
+    <property name="piso" type="int">
+      <column name="piso" not-null="true"/>
+    </property>
+    <property name="turno" type="int">
+      <column name="turno" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
