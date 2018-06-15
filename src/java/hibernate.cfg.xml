@@ -40,12 +40,18 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-  <session-factory>
+  <!--
+    <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ComedorBD</property>
     <mapping resource="com/demo5/models/ComedorAlumno.hbm.xml"/>
+  </session-factory>
+  -->
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
+    <property name="hibernate.connection.datasource">Comedor</property>
   </session-factory>
 </hibernate-configuration>

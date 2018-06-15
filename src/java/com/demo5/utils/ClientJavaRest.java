@@ -24,8 +24,8 @@ public class ClientJavaRest {
         
         try {
                 
-                String prueba = "http://206.189.70.137:8000/alumnos/"+codigoAlumno;
-		URL url = new URL("http://206.189.70.137:8000/alumnos/"+codigoAlumno);
+                String prueba = "http://206.189.70.137/alumnos/"+codigoAlumno;
+		URL url = new URL("http://206.189.70.137/alumnos/"+codigoAlumno);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Accept", "application/json");
