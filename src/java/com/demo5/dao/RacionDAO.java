@@ -7,6 +7,7 @@ package com.demo5.dao;
 
 import com.demo5.utils.NewHibernateUtil;
 import com.demo5.models.ComedorAlumno;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -31,6 +32,26 @@ public class RacionDAO {
             session.close();
         } 
     }
+    
+    public ComedorAlumno findPedidoRacionAlumno(int dniAlumno){
+        ComedorAlumno comedorAlumno = null;
+        Transaction trns = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        try{
+            trns = session.beginTransaction();
+            String queryString = "from ComedorAlumno where dniAlumno = :idToFind";
+            Query query = session.createQuery(queryString);
+            query.setInteger("idToFind", dniAlumno);
+            comedorAlumno = (ComedorAlumno) query.uniqueResult();
+        }catch(RuntimeException e){
+            e.printStackTrace();
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return comedorAlumno;
+    }
+    
     /*
     public void deleteUsuario(int idUsuario){
         Transaction trns = null;

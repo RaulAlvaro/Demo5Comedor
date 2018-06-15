@@ -31,10 +31,16 @@ public class ClientJavaRest {
 		conn.setRequestProperty("Accept", "application/json");
 
 		if (conn.getResponseCode() != 200) {
-			throw new RuntimeException("Failed : HTTP error code : "
-					+ conn.getResponseCode());
-		}
+                    if(conn.getResponseCode()==500){
+                        String respuesta = conn.getResponseMessage();
+                        return respuesta;
+                    }
 
+                    //throw new RuntimeException("Failed : HTTP error code : "
+		    //		+ conn.getResponseCode());
+                        
+		}              
+                
 		BufferedReader br = new BufferedReader(new InputStreamReader(
 			(conn.getInputStream())));
 

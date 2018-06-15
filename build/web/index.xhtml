@@ -16,37 +16,42 @@
             }
         </style>
     </h:head>
-    <h:body>
-        <div style="background-color: #000"> 
-            <h1 style="text-align: center; color: #ffffff; margin-top: 0; padding: 1em;">Clinica Universitaria de la UNMSM</h1>
+    <h:body style="background-color: beige">
+        <div style="background-color: #800000"> 
+            <h1 style="text-align: center; color: #ffffff; margin-top: 0; padding: 1em;">Comedor Universitario de la UNMSM</h1>
         </div>
         <h:form>
 
 
             <div class="container">
 
-                <h2>Registro de Estudiante</h2>
+                <h2 style="font-weight: bold">Registro de Turno - Alumno</h2>
                 <hr></hr>
+                <br></br>
                 <h3>Ingrese el código del estudiante:</h3>
 
                 <div class="row" style="text-align: center">
                     <h:inputText value="#{racionBeans.codigoAlumno}"></h:inputText>
                 </div>
                 <div class="row" style="text-align: center">
-                    <h:outputLabel value=""/>
+                    <h:outputLabel style="color: red" value="#{racionBeans.msjdataalumno}"/>
                 </div>
                 <div class="row" style="text-align: center">
-                    <h:commandButton value="Buscar" action="#{racionBeans.cargarAlumno()}"></h:commandButton><br></br>
+                    <h:commandButton value="Buscar" action="#{racionBeans.cargarAlumno()}" style="background-color: tan; 
+                                         border: 2px solid; border-radius: 6px; padding: 5px; font-weight: 600; text-decoration: none; 
+                                         font-size: 18px;"></h:commandButton><br></br>
                 </div>
                 <hr></hr>
-                <h4>DATOS PERSONALES</h4>
+                <hr></hr>
+
+                <h3>Datos Personales</h3>
                 <div class="row" style="margin: 2em;">
                     <div class="col-md-4">
                         <div class="col-md-4">
                             <h:outputLabel value="Dni"/>
                         </div>
                         <div class="col-md-8">
-                            <h:inputText value="#{racionBeans.dniAlumno}"/>
+                            <h:inputText value="#{racionBeans.dniAlumno}" disabled="true"/>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -87,7 +92,12 @@
                         </div>
                     </div>
                 </div>
+                
+                <hr></hr>
+                <hr></hr>
 
+                <h3>Piso y Turno</h3>
+                
                 <div class="row" style="margin: 2em;">
                     <div class="col-md-6">
                         <div class="col-md-4">
@@ -108,11 +118,22 @@
                 </div>
                 <hr></hr>
 
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <h:commandButton value="Guardar" action="#{racionBeans.addRacion()}"></h:commandButton>
+                <div class="row">
+                    <div align="center">
+                        <h:commandButton value="Guardar" action="#{racionBeans.addRacion()}" style="background-color: tan; 
+                                         border: 2px solid; border-radius: 6px; padding: 5px; font-weight: 600; text-decoration: none; 
+                                         font-size: 18px;"></h:commandButton>
                     </div>
                 </div>
+                
+                <div class="row">
+                    <div align="center">
+                        <h:outputLabel style="color: red; font-size: 30px;" value="#{racionBeans.msjavisorepeticion}"/>
+                    </div>
+                </div>
+                
+                
+                
             </div>    
 
 

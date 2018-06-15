@@ -38,18 +38,26 @@ public class RacionBeans {
     private String response;
     ClientJavaRest clientJavaRest;
     private String msjdataalumno;
-     
+    private String msjavisorepeticion; 
+    
     public RacionBeans(){
         clientJavaRest = new ClientJavaRest();
         msjdataalumno="";
+        msjavisorepeticion="";
     }
     
     
     public void addRacion(){
         ComedorAlumno comedorAlumno = new ComedorAlumno(dniAlumno, codigoAlumno, nombresAlumno, apellidosAlumno, facultad, escuela, piso, turno);
         RacionDAO racionDAO = new RacionDAO();
-        racionDAO.addRacion(comedorAlumno);
-        limpiarCampos();
+        if (racionDAO.findPedidoRacionAlumno(dniAlumno)!= null) {
+            limpiarCampos();
+            setMsjavisorepeticion("EL ALUMNO YA FUE REGISTRADO");
+        }
+        else{
+            racionDAO.addRacion(comedorAlumno);
+            limpiarCampos();
+        }
     }
     
     public void limpiarCampos(){
@@ -61,6 +69,7 @@ public class RacionBeans {
         setEscuela("");
         setPiso(-1);
         setTurno(-1);
+        //setMsjdataalumno("");
     }
     
     public void cargarAlumno() throws IOException, TimeoutException {
@@ -70,12 +79,17 @@ public class RacionBeans {
         response = clientJavaRest.consumirAPI(codigoAlumno);
         System.out.println(response);
         
-        String[] parts = response.split(" ");
-        String part1 = parts[0];
+        //String[] parts = response.split(" ");
+        //String part1 = parts[0];
         
-        if (part1.equals("[AttributeError")) {
-            msjdataalumno = "Alumno no encontrado";
+        //if (part1.equals("[AttributeError")) {
+        //    msjdataalumno = "Alumno no encontrado";
+        
+        if(response.equals("Internal Server Error")){
             limpiarCampos();
+            setMsjdataalumno("Alumno no encontrado");
+            setMsjavisorepeticion("");
+            
             
         } else {
             msjdataalumno = "";
@@ -180,7 +194,24 @@ public class RacionBeans {
     public void setClientJavaRest(ClientJavaRest clientJavaRest) {
         this.clientJavaRest = clientJavaRest;
     }
+
+    public String getMsjdataalumno() {
+        return msjdataalumno;
+    }
+
+    public void setMsjdataalumno(String msjdataalumno) {
+        this.msjdataalumno = msjdataalumno;
+    }
+
+    public String getMsjavisorepeticion() {
+        return msjavisorepeticion;
+    }
+
+    public void setMsjavisorepeticion(String msjavisorepeticion) {
+        this.msjavisorepeticion = msjavisorepeticion;
+    }
      
+    
     
     
      
