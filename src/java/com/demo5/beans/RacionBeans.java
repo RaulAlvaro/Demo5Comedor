@@ -25,7 +25,7 @@ import javax.inject.Named;
  */
 @ManagedBean(name = "racionBeans")
 @SessionScoped
-public class RacionBeans implements Serializable{
+public class RacionBeans {
        
     private int dniAlumno;
     private int codigoAlumno;

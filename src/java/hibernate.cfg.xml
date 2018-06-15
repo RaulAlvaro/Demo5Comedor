@@ -50,8 +50,11 @@ Contributor(s):
     <mapping resource="com/demo5/models/ComedorAlumno.hbm.xml"/>
   </session-factory>
   -->
+  
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
     <property name="hibernate.connection.datasource">Comedor</property>
+    <mapping resource="com/demo5/models/ComedorAlumno.hbm.xml"/>
   </session-factory>
+  
 </hibernate-configuration>

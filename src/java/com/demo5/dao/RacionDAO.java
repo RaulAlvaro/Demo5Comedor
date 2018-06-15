@@ -7,7 +7,6 @@ package com.demo5.dao;
 
 import com.demo5.utils.NewHibernateUtil;
 import com.demo5.models.ComedorAlumno;
-import net.sf.ehcache.hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
